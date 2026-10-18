@@ -16,7 +16,6 @@ var attack_remaining: float = 0.0
 func _ready() -> void:
     add_to_group("player")
     global_position = GameState.player_position
-    _apply_hero_model()
     update_animation(false)
 
 func _physics_process(delta: float) -> void:
@@ -107,19 +106,3 @@ func return_to_spawn() -> void:
     global_position = Vector2(560, 506)
     velocity = Vector2.ZERO
 
-func toggle_hero_model() -> void:
-    GameState.hero_model = "2d" if GameState.hero_model == "3d" else "3d"
-    _apply_hero_model()
-    GameState.save_game()
-    GameState.message.emit("Герой: %s-спрайт" % GameState.hero_model.to_upper())
-
-func _apply_hero_model() -> void:
-    if GameState.hero_model == "3d":
-        art.sprite_frames = load("res://resources/animations/hero-3d-atlas.tres")
-        art.scale = Vector2(0.625, 0.625)
-        art.position = Vector2(0,-24)
-    else:
-        art.sprite_frames = load("res://resources/animations/hero.tres")
-        art.scale = Vector2.ONE
-        art.position = Vector2(0,-19)
-    art.play("idle_" + direction)
