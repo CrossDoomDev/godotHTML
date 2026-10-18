@@ -1,16 +1,7 @@
 name: Build editable Godot village from HTML
+# Manual-only importer: never overwrite editor-made scenes on push.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/build-godot-port.yml'
-      - 'tools/import_html_art.py'
-      - 'tools/build_scenes.gd'
-      - 'scripts/**'
-      - 'tests/**'
-      - 'scenes/base/**'
-      - 'project.godot'
 concurrency:
   group: godothtml-editor-port-main
   cancel-in-progress: true
