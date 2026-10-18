@@ -20,7 +20,6 @@ var quest_accepted: bool = false
 var quest_reward: bool = false
 var boss_defeated: bool = false
 var player_position: Vector2 = Vector2(560, 506)
-var hero_model: String = "3d"
 
 func _ready() -> void:
     load_game()
@@ -138,7 +137,7 @@ func save_game() -> void:
         "mana": mana, "coins": coins, "herbs": herbs,
         "potions": potions, "wood": wood, "kills": kills,
         "quest_accepted": quest_accepted, "quest_reward": quest_reward,
-        "boss_defeated": boss_defeated, "hero_model": hero_model,
+        "boss_defeated": boss_defeated,
         "position": [player_position.x, player_position.y]
     }
     var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -163,8 +162,6 @@ func load_game() -> void:
     for key in ["quest_accepted", "quest_reward", "boss_defeated"]:
         if data.get(key) is bool:
             set(key, data[key])
-    if data.get("hero_model") in ["2d", "3d"]:
-        hero_model = data["hero_model"]
     if data.get("position") is Array and data.position.size() == 2:
         player_position = Vector2(float(data.position[0]), float(data.position[1]))
     changed.emit()
