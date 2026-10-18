@@ -51,17 +51,17 @@ corner_radius_top_right = 9
 corner_radius_bottom_right = 9
 corner_radius_bottom_left = 9
 
-[node name="HUD" type="CanvasLayer" unique_id=993006323]
+[node name="HUD" type="CanvasLayer" unique_id=230392097]
 script = ExtResource("1_50t0b")
 
-[node name="Screen" type="Control" parent="." unique_id=895468431]
+[node name="Screen" type="Control" parent="." unique_id=244908430]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="StatusPanel" type="PanelContainer" parent="Screen" unique_id=2142181406]
+[node name="StatusPanel" type="PanelContainer" parent="Screen" unique_id=699453597]
 custom_minimum_size = Vector2(390, 138)
 layout_mode = 0
 offset_left = 15.0
@@ -70,39 +70,39 @@ offset_right = 15.0
 offset_bottom = 15.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqwuk")
 
-[node name="Stats" type="VBoxContainer" parent="Screen/StatusPanel" unique_id=159455803]
+[node name="Stats" type="VBoxContainer" parent="Screen/StatusPanel" unique_id=597384703]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Screen/StatusPanel/Stats" unique_id=1197249546]
+[node name="Title" type="Label" parent="Screen/StatusPanel/Stats" unique_id=1500380830]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
 theme_override_font_sizes/font_size = 18
 text = "ТИХОЛЕСЬЕ · ЛЕСНАЯ ДЕРЕВНЯ"
 
-[node name="StatsText" type="Label" parent="Screen/StatusPanel/Stats" unique_id=1344478165]
+[node name="StatsText" type="Label" parent="Screen/StatusPanel/Stats" unique_id=594336689]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
 theme_override_font_sizes/font_size = 15
 text = "Ур. 1   Монеты: 0"
 
-[node name="HealthBar" type="ProgressBar" parent="Screen/StatusPanel/Stats" unique_id=383122767]
+[node name="HealthBar" type="ProgressBar" parent="Screen/StatusPanel/Stats" unique_id=621137282]
 custom_minimum_size = Vector2(340, 17)
 layout_mode = 2
 show_percentage = false
 
-[node name="ExperienceBar" type="ProgressBar" parent="Screen/StatusPanel/Stats" unique_id=21308995]
+[node name="ExperienceBar" type="ProgressBar" parent="Screen/StatusPanel/Stats" unique_id=1218965318]
 custom_minimum_size = Vector2(340, 9)
 layout_mode = 2
 show_percentage = false
 
-[node name="QuestText" type="Label" parent="Screen/StatusPanel/Stats" unique_id=403063356]
+[node name="QuestText" type="Label" parent="Screen/StatusPanel/Stats" unique_id=2061122768]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
 theme_override_font_sizes/font_size = 13
 text = "Поговори со старостой"
 autowrap_mode = 3
 
-[node name="Actions" type="VBoxContainer" parent="Screen" unique_id=878591668]
+[node name="Actions" type="VBoxContainer" parent="Screen" unique_id=2079244660]
 layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
@@ -110,39 +110,49 @@ offset_left = -175.0
 offset_top = 18.0
 offset_right = -14.0
 
-[node name="InventoryButton" type="Button" parent="Screen/Actions" unique_id=1958661917]
+[node name="InventoryButton" type="Button" parent="Screen/Actions" unique_id=778149046]
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 text = "🎒 Рюкзак (B)"
 
-[node name="QuestButton" type="Button" parent="Screen/Actions" unique_id=1908905900]
+[node name="QuestButton" type="Button" parent="Screen/Actions" unique_id=1578434887]
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 text = "📜 Задания (J)"
 
-[node name="PotionButton" type="Button" parent="Screen/Actions" unique_id=216065453]
+[node name="PotionButton" type="Button" parent="Screen/Actions" unique_id=504014333]
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 text = "🧪 Зелье (2)"
 
-[node name="AttackButton" type="Button" parent="Screen/Actions" unique_id=37034107]
+[node name="AttackButton" type="Button" parent="Screen/Actions" unique_id=1717810186]
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 text = "⚔ Атака"
 
-[node name="SaveButton" type="Button" parent="Screen/Actions" unique_id=174484368]
+[node name="SaveButton" type="Button" parent="Screen/Actions" unique_id=797957365]
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 text = "💾 Сохранить"
 
-[node name="Minimap" type="TextureRect" parent="Screen/Actions" unique_id=596790383]
+[node name="ModelButton" type="Button" parent="Screen/Actions" unique_id=239057924]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "👤 Спрайт 2D / 3D"
+
+[node name="NightButton" type="Button" parent="Screen/Actions" unique_id=666417124]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "🌙 День / ночь"
+
+[node name="Minimap" type="TextureRect" parent="Screen/Actions" unique_id=1964678174]
 custom_minimum_size = Vector2(160, 128)
 layout_mode = 2
 texture = ExtResource("2_5xlti")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="InventoryPanel" type="PanelContainer" parent="Screen" unique_id=97456823]
+[node name="InventoryPanel" type="PanelContainer" parent="Screen" unique_id=554275732]
 layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
@@ -152,27 +162,27 @@ offset_right = -14.0
 offset_bottom = 690.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wm62a")
 
-[node name="InventoryBox" type="VBoxContainer" parent="Screen/InventoryPanel" unique_id=816951391]
+[node name="InventoryBox" type="VBoxContainer" parent="Screen/InventoryPanel" unique_id=221349862]
 layout_mode = 2
 
-[node name="InventoryTitle" type="Label" parent="Screen/InventoryPanel/InventoryBox" unique_id=1117531311]
+[node name="InventoryTitle" type="Label" parent="Screen/InventoryPanel/InventoryBox" unique_id=622662799]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
 theme_override_font_sizes/font_size = 19
 text = "РЮКЗАК · ПЕРСОНАЖ"
 
-[node name="InventoryText" type="RichTextLabel" parent="Screen/InventoryPanel/InventoryBox" unique_id=1868502254]
+[node name="InventoryText" type="RichTextLabel" parent="Screen/InventoryPanel/InventoryBox" unique_id=1499941511]
 custom_minimum_size = Vector2(320, 295)
 layout_mode = 2
 bbcode_enabled = true
 scroll_active = false
 
-[node name="CloseInventory" type="Button" parent="Screen/InventoryPanel/InventoryBox" unique_id=1531267444]
+[node name="CloseInventory" type="Button" parent="Screen/InventoryPanel/InventoryBox" unique_id=2054714042]
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 text = "Закрыть"
 
-[node name="DialoguePanel" type="PanelContainer" parent="Screen" unique_id=992076658]
+[node name="DialoguePanel" type="PanelContainer" parent="Screen" unique_id=448502256]
 layout_mode = 0
 anchor_left = 0.22
 anchor_top = 1.0
@@ -182,46 +192,46 @@ offset_top = -215.0
 offset_bottom = -16.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6ja6d")
 
-[node name="DialogueBox" type="VBoxContainer" parent="Screen/DialoguePanel" unique_id=926447869]
+[node name="DialogueBox" type="VBoxContainer" parent="Screen/DialoguePanel" unique_id=2101315204]
 layout_mode = 2
 
-[node name="DialogueTitle" type="Label" parent="Screen/DialoguePanel/DialogueBox" unique_id=769806432]
+[node name="DialogueTitle" type="Label" parent="Screen/DialoguePanel/DialogueBox" unique_id=1614278055]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
 theme_override_font_sizes/font_size = 19
 text = "Разговор"
 
-[node name="DialogueText" type="Label" parent="Screen/DialoguePanel/DialogueBox" unique_id=68207708]
+[node name="DialogueText" type="Label" parent="Screen/DialoguePanel/DialogueBox" unique_id=1266269157]
 custom_minimum_size = Vector2(450, 68)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
 theme_override_font_sizes/font_size = 14
 autowrap_mode = 3
 
-[node name="DialogueActions" type="HBoxContainer" parent="Screen/DialoguePanel/DialogueBox" unique_id=1332088371]
+[node name="DialogueActions" type="HBoxContainer" parent="Screen/DialoguePanel/DialogueBox" unique_id=749397796]
 layout_mode = 2
 
-[node name="BuyPotion" type="Button" parent="Screen/DialoguePanel/DialogueBox/DialogueActions" unique_id=142198214]
+[node name="BuyPotion" type="Button" parent="Screen/DialoguePanel/DialogueBox/DialogueActions" unique_id=1062999306]
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 text = "Зелье: 10 монет"
 
-[node name="SellWood" type="Button" parent="Screen/DialoguePanel/DialogueBox/DialogueActions" unique_id=1779587369]
+[node name="SellWood" type="Button" parent="Screen/DialoguePanel/DialogueBox/DialogueActions" unique_id=398274215]
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 text = "Продать древесину"
 
-[node name="RestButton" type="Button" parent="Screen/DialoguePanel/DialogueBox/DialogueActions" unique_id=266120112]
+[node name="RestButton" type="Button" parent="Screen/DialoguePanel/DialogueBox/DialogueActions" unique_id=83891376]
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 text = "Отдохнуть"
 
-[node name="CloseDialogue" type="Button" parent="Screen/DialoguePanel/DialogueBox" unique_id=358739045]
+[node name="CloseDialogue" type="Button" parent="Screen/DialoguePanel/DialogueBox" unique_id=454438130]
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 text = "Закрыть диалог"
 
-[node name="ToastText" type="Label" parent="Screen" unique_id=1027530389]
+[node name="ToastText" type="Label" parent="Screen" unique_id=2107112989]
 layout_mode = 0
 anchor_left = 0.25
 anchor_right = 0.75
@@ -231,6 +241,6 @@ theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
 theme_override_font_sizes/font_size = 17
 horizontal_alignment = 1
 
-[node name="ToastTimer" type="Timer" parent="." unique_id=989076467]
+[node name="ToastTimer" type="Timer" parent="." unique_id=1018051525]
 wait_time = 2.6
 one_shot = true
