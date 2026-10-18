@@ -1,0 +1,51 @@
+name: Validate 2D Godot game
+
+# This workflow NEVER regenerates scenes from HTML or commits files.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/test-godot.yml'
+      - 'scenes/**'
+      - 'scripts/**'
+      - 'resources/**'
+      - 'art/**'
+      - 'project.godot'
+      - 'tests/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Godot 4.7.1
+        run: |
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.7.1-stable/Godot_v4.7.1-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot4
+          chmod +x /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64
+      - name: Import and validate saved scenes
+        run: |
+          /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64 --headless --editor --path . --quit > /tmp/editor.log 2>&1 || (cat /tmp/editor.log && exit 1)
+          if grep -E 'SCRIPT ERROR|Parse Error|ERROR: Cannot open|ERROR: Failed loading' /tmp/editor.log; then
+            cat /tmp/editor.log
+            exit 1
+          fi
+          tail -20 /tmp/editor.log
+      - name: Run game regression checks
+        run: |
+          /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64 --headless --path . --script res://tests/smoke.gd > /tmp/test.log 2>&1 || (cat /tmp/test.log && exit 1)
+          cat /tmp/test.log
+          grep -q '\[SMOKE\] OK' /tmp/test.log
+      - name: Launch main game scene
+        run: |
+          /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64 --headless --path . --quit-after 45 > /tmp/runtime.log 2>&1 || (cat /tmp/runtime.log && exit 1)
+          if grep -E 'SCRIPT ERROR|Parse Error|ERROR: Invalid call' /tmp/runtime.log; then
+            cat /tmp/runtime.log
+            exit 1
+          fi
+          tail -20 /tmp/runtime.log
