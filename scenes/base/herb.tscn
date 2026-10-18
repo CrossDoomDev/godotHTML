@@ -10,15 +10,15 @@ region = Rect2(24, 0, 24, 24)
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqy6c"]
 radius = 12.0
 
-[node name="Herb" type="Area2D" unique_id=978222769]
+[node name="Herb" type="Area2D" unique_id=2094231948]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_r5lxm")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1861636776]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=910159200]
 position = Vector2(0, -9)
 texture = SubResource("AtlasTexture_ynlqf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2091735480]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=846278068]
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_jqy6c")

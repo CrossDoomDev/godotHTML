@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" uid="uid://i80pnf2jj1p4" path="res://scripts/main.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dmgowx8ofiinf" path="res://scenes/world/village.tscn" id="2_tefeu"]
-[ext_resource type="Script" uid="uid://dgl31ym8ho8xu" path="res://scripts/world.gd" id="3_o6xl0"]
+[ext_resource type="Script" uid="uid://cyb6uy26ql7l5" path="res://scripts/world.gd" id="3_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://cwstnq1j6spjo" path="res://scenes/base/hud.tscn" id="4_tipki"]
-[ext_resource type="Script" uid="uid://b3kly1svdgbu3" path="res://scripts/hud.gd" id="5_85g3d"]
+[ext_resource type="Script" uid="uid://bxgkv3tpu5r3m" path="res://scripts/hud.gd" id="5_85g3d"]
 
-[node name="Main" type="Node2D" unique_id=802374732]
+[node name="Main" type="Node2D" unique_id=1368737037]
 script = ExtResource("1_tbgi4")
 
-[node name="Village" type="Node2D" parent="." unique_id=306795681 instance=ExtResource("2_tefeu")]
+[node name="Village" type="Node2D" parent="." unique_id=1094063628 instance=ExtResource("2_tefeu")]
 script = ExtResource("3_o6xl0")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=230392097 instance=ExtResource("4_tipki")]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=332432125 instance=ExtResource("4_tipki")]
 script = ExtResource("5_85g3d")

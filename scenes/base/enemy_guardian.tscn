@@ -6,24 +6,24 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_p3pgy"]
 radius = 18.0
 
-[node name="Guardian" type="CharacterBody2D" unique_id=676775051]
+[node name="Guardian" type="CharacterBody2D" unique_id=1144382963]
 collision_layer = 2
 script = ExtResource("1_xillr")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=746404165]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=201565460]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_0cvl7")
 animation = &"idle_down"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=182025151]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104923985]
 position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_p3pgy")
 
-[node name="RespawnTimer" type="Timer" parent="." unique_id=1126736591]
+[node name="RespawnTimer" type="Timer" parent="." unique_id=2081085891]
 wait_time = 20.0
 one_shot = true
 
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=135723247]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1947887635]
 offset_left = -23.0
 offset_top = -70.0
 offset_right = 23.0
