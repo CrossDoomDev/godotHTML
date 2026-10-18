@@ -1,0 +1,62 @@
+name: Build editable Godot village from HTML
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-godot-port.yml'
+      - 'tools/import_html_art.py'
+      - 'tools/build_scenes.gd'
+      - 'scripts/**'
+      - 'scenes/base/**'
+      - 'project.godot'
+permissions:
+  contents: write
+jobs:
+  import-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Import all original assets and world layout
+        run: |
+          python -m pip install --quiet Pillow
+          python tools/import_html_art.py
+      - name: Download Godot 4.7.1 Linux editor
+        run: |
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.7.1-stable/Godot_v4.7.1-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot4
+          chmod +x /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64
+          echo "/tmp/godot4" >> "$GITHUB_PATH"
+      - name: Import PNGs and scripts
+        run: |
+          /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64 --headless --editor --path . --quit > /tmp/import.log 2>&1 || (cat /tmp/import.log && exit 1)
+          tail -25 /tmp/import.log
+      - name: Generate editable scenes and TileMapLayers
+        run: |
+          /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64 --headless --editor --path . --script res://tools/build_scenes.gd > /tmp/build.log 2>&1 || (cat /tmp/build.log && exit 1)
+          cat /tmp/build.log
+          test -s scenes/world/village.tscn
+          test -s scenes/main.tscn
+          test -s resources/tilesets/village.tres
+      - name: Reimport scenes, verify no parse errors
+        run: |
+          /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64 --headless --editor --path . --quit > /tmp/import2.log 2>&1 || (cat /tmp/import2.log && exit 1)
+          cat /tmp/import2.log | grep -E 'SCRIPT ERROR|Parse Error|ERROR:' && exit 1 || true
+      - name: Native Godot smoke tests
+        run: |
+          /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64 --headless --path . --script res://tests/smoke.gd > /tmp/test.log 2>&1 || (cat /tmp/test.log && exit 1)
+          cat /tmp/test.log
+          grep -q '\[SMOKE\] OK' /tmp/test.log
+      - name: Commit generated editor assets to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add art/ assets/ resources/ scenes/ data/ docs/ || true
+          if git diff --cached --quiet; then echo 'No generated changes'; exit 0; fi
+          git commit -m 'Import editable Godot TileMap layers, scenery, characters and UI'
+          git pull --rebase origin main
+          git push origin HEAD:main
