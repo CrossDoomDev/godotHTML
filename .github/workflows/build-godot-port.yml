@@ -8,6 +8,7 @@ on:
       - 'tools/import_html_art.py'
       - 'tools/build_scenes.gd'
       - 'scripts/**'
+      - 'tests/**'
       - 'scenes/base/**'
       - 'project.godot'
 permissions:
