@@ -127,7 +127,10 @@ def main() -> None:
         subprocess.run(["git", "clone", "--quiet", "--depth", "1", SOURCE_URL, str(src)], check=True)
         original = src / "assets"
         for asset in original.iterdir():
-            if asset.suffix.lower() in (".png", ".glb", ".json") and "hero-3d" not in asset.stem.lower():
+            # Only 2D image/metadata assets belong in the Godot 2D project.
+            # Never import GLB/GLTF meshes, even if the HTML source adds them later.
+            # Keep ignoring historical 3D-rendered hero frames.
+            if asset.suffix.lower() in (".png", ".json") and "hero-3d" not in asset.stem.lower():
                 shutil.copy2(asset, ROOT / "assets/original" / asset.name)
         source = Image.open(original / "village-source.png").convert("RGBA")
         for name, (rect, size) in SPECS.items():
