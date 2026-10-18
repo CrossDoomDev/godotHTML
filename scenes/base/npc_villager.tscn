@@ -5,23 +5,23 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e03m1"]
 
-[node name="Villager" type="Node2D" unique_id=1200228796]
+[node name="Villager" type="Node2D" unique_id=977000595]
 script = ExtResource("1_fabvv")
 character_name = "Травница Лина"
 role = "herbalist"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=930553368]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=206739020]
 position = Vector2(0, -17)
 sprite_frames = ExtResource("2_cnof0")
 animation = &"idle_down"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=407342546]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1256132221]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1393431669]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2004830671]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_e03m1")
 
-[node name="NameLabel" type="Label" parent="." unique_id=1242328810]
+[node name="NameLabel" type="Label" parent="." unique_id=1506616883]
 offset_left = -72.0
 offset_top = -64.0
 offset_right = 72.0

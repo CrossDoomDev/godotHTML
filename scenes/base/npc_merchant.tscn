@@ -5,23 +5,23 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_alb5r"]
 
-[node name="Merchant" type="Node2D" unique_id=944180282]
+[node name="Merchant" type="Node2D" unique_id=104755523]
 script = ExtResource("1_0h60j")
 character_name = "Торговка Мира"
 role = "merchant"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=653886756]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=99971738]
 position = Vector2(0, -17)
 sprite_frames = ExtResource("2_0vq6u")
 animation = &"idle_down"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1534500531]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1507456294]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=798590392]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1199616040]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_alb5r")
 
-[node name="NameLabel" type="Label" parent="." unique_id=1671950640]
+[node name="NameLabel" type="Label" parent="." unique_id=786226194]
 offset_left = -72.0
 offset_top = -64.0
 offset_right = 72.0

@@ -5,23 +5,23 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8bh7l"]
 
-[node name="Smith" type="Node2D" unique_id=266839275]
+[node name="Smith" type="Node2D" unique_id=1932365672]
 script = ExtResource("1_im602")
 character_name = "Кузнец Бран"
 role = "smith"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=470581638]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=346827676]
 position = Vector2(0, -17)
 sprite_frames = ExtResource("2_vj6x2")
 animation = &"idle_down"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=900328998]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1682345068]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=981014314]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1913142357]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_8bh7l")
 
-[node name="NameLabel" type="Label" parent="." unique_id=489145408]
+[node name="NameLabel" type="Label" parent="." unique_id=1697752682]
 offset_left = -72.0
 offset_top = -64.0
 offset_right = 72.0
