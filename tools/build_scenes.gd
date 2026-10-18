@@ -58,6 +58,8 @@ func _make_tileset() -> void:
     var source := TileSetAtlasSource.new()
     source.texture = load("res://art/terrain/tileset.png")
     source.texture_region_size = Vector2i(T, T)
+    # Source must be attached to TileSet BEFORE TileData physics is configured.
+    tile_set.add_source(source, 0)
     for row in range(4):
         for col in range(16):
             var tile := Vector2i(col, row)
@@ -69,7 +71,6 @@ func _make_tileset() -> void:
                 data.set_collision_polygon_points(0, 0, PackedVector2Array([
                     Vector2(-16,-16), Vector2(16,-16), Vector2(16,16), Vector2(-16,16)
                 ]))
-    tile_set.add_source(source, 0)
     var err := ResourceSaver.save(tile_set, TILESET_PATH)
     if err != OK:
         push_error("TileSet save failed: " + error_string(err))
