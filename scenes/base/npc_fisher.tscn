@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cqm4qcwiaex60"]
+
+[ext_resource type="Script" uid="uid://dqdotjgrci6fo" path="res://scripts/npc.gd" id="1_61nr4"]
+[ext_resource type="SpriteFrames" uid="uid://u40s1a3p2mr6" path="res://resources/animations/merchant.tres" id="2_wyi4m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wb3np"]
+
+[node name="Fisher" type="Node2D" unique_id=621160147]
+script = ExtResource("1_61nr4")
+character_name = "Рыбак Финн"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1921689812]
+position = Vector2(0, -17)
+sprite_frames = ExtResource("2_wyi4m")
+animation = &"idle_down"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1660438604]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=884536661]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_wb3np")
+
+[node name="NameLabel" type="Label" parent="." unique_id=1503162055]
+offset_left = -72.0
+offset_top = -64.0
+offset_right = 72.0
+offset_bottom = -41.0
+theme_override_colors/font_color = Color(0.9490196, 0.8784314, 0.6745098, 1)
+theme_override_font_sizes/font_size = 11
+text = "Рыбак Финн"
+horizontal_alignment = 1

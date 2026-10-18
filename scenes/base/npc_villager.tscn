@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dyofvpp7runk3"]
+
+[ext_resource type="Script" uid="uid://dqdotjgrci6fo" path="res://scripts/npc.gd" id="1_fabvv"]
+[ext_resource type="SpriteFrames" uid="uid://pk62vk7c30yr" path="res://resources/animations/villager.tres" id="2_cnof0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e03m1"]
+
+[node name="Villager" type="Node2D" unique_id=416307375]
+script = ExtResource("1_fabvv")
+character_name = "Травница Лина"
+role = "herbalist"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=448459277]
+position = Vector2(0, -17)
+sprite_frames = ExtResource("2_cnof0")
+animation = &"idle_down"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=290683590]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1666210763]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_e03m1")
+
+[node name="NameLabel" type="Label" parent="." unique_id=570646016]
+offset_left = -72.0
+offset_top = -64.0
+offset_right = 72.0
+offset_bottom = -41.0
+theme_override_colors/font_color = Color(0.9490196, 0.8784314, 0.6745098, 1)
+theme_override_font_sizes/font_size = 11
+text = "Травница Лина"
+horizontal_alignment = 1

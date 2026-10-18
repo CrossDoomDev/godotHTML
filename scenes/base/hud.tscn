@@ -1,0 +1,236 @@
+[gd_scene format=3 uid="uid://cwstnq1j6spjo"]
+
+[ext_resource type="Script" uid="uid://b3kly1svdgbu3" path="res://scripts/hud.gd" id="1_50t0b"]
+[ext_resource type="Texture2D" uid="uid://bcgi47s5yexcl" path="res://art/terrain/minimap.png" id="2_5xlti"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqwuk"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.13333334, 0.11764706, 0.09803922, 0.93333334)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6039216, 0.47058824, 0.3019608, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wm62a"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.13333334, 0.11764706, 0.09803922, 0.93333334)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6039216, 0.47058824, 0.3019608, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ja6d"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.13333334, 0.11764706, 0.09803922, 0.93333334)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6039216, 0.47058824, 0.3019608, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[node name="HUD" type="CanvasLayer" unique_id=1294139420]
+script = ExtResource("1_50t0b")
+
+[node name="Screen" type="Control" parent="." unique_id=938086544]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="StatusPanel" type="PanelContainer" parent="Screen" unique_id=334604382]
+custom_minimum_size = Vector2(390, 138)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 15.0
+offset_bottom = 15.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqwuk")
+
+[node name="Stats" type="VBoxContainer" parent="Screen/StatusPanel" unique_id=1287157593]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Screen/StatusPanel/Stats" unique_id=1085047654]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
+theme_override_font_sizes/font_size = 18
+text = "ТИХОЛЕСЬЕ · ЛЕСНАЯ ДЕРЕВНЯ"
+
+[node name="StatsText" type="Label" parent="Screen/StatusPanel/Stats" unique_id=1863743346]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
+theme_override_font_sizes/font_size = 15
+text = "Ур. 1   Монеты: 0"
+
+[node name="HealthBar" type="ProgressBar" parent="Screen/StatusPanel/Stats" unique_id=1951096780]
+custom_minimum_size = Vector2(340, 17)
+layout_mode = 2
+show_percentage = false
+
+[node name="ExperienceBar" type="ProgressBar" parent="Screen/StatusPanel/Stats" unique_id=1742126257]
+custom_minimum_size = Vector2(340, 9)
+layout_mode = 2
+show_percentage = false
+
+[node name="QuestText" type="Label" parent="Screen/StatusPanel/Stats" unique_id=1551854715]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Поговори со старостой"
+autowrap_mode = 3
+
+[node name="Actions" type="VBoxContainer" parent="Screen" unique_id=267816103]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -175.0
+offset_top = 18.0
+offset_right = -14.0
+
+[node name="InventoryButton" type="Button" parent="Screen/Actions" unique_id=885760325]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "🎒 Рюкзак (B)"
+
+[node name="QuestButton" type="Button" parent="Screen/Actions" unique_id=958628904]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "📜 Задания (J)"
+
+[node name="PotionButton" type="Button" parent="Screen/Actions" unique_id=1137264603]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "🧪 Зелье (2)"
+
+[node name="AttackButton" type="Button" parent="Screen/Actions" unique_id=157597475]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "⚔ Атака"
+
+[node name="SaveButton" type="Button" parent="Screen/Actions" unique_id=1859682648]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "💾 Сохранить"
+
+[node name="Minimap" type="TextureRect" parent="Screen/Actions" unique_id=1198130325]
+custom_minimum_size = Vector2(160, 128)
+layout_mode = 2
+texture = ExtResource("2_5xlti")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventoryPanel" type="PanelContainer" parent="Screen" unique_id=1236361666]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -367.0
+offset_top = 315.0
+offset_right = -14.0
+offset_bottom = 690.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wm62a")
+
+[node name="InventoryBox" type="VBoxContainer" parent="Screen/InventoryPanel" unique_id=663807180]
+layout_mode = 2
+
+[node name="InventoryTitle" type="Label" parent="Screen/InventoryPanel/InventoryBox" unique_id=487025675]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
+theme_override_font_sizes/font_size = 19
+text = "РЮКЗАК · ПЕРСОНАЖ"
+
+[node name="InventoryText" type="RichTextLabel" parent="Screen/InventoryPanel/InventoryBox" unique_id=545437150]
+custom_minimum_size = Vector2(320, 295)
+layout_mode = 2
+bbcode_enabled = true
+scroll_active = false
+
+[node name="CloseInventory" type="Button" parent="Screen/InventoryPanel/InventoryBox" unique_id=2059401873]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "Закрыть"
+
+[node name="DialoguePanel" type="PanelContainer" parent="Screen" unique_id=695092046]
+layout_mode = 0
+anchor_left = 0.22
+anchor_top = 1.0
+anchor_right = 0.78
+anchor_bottom = 1.0
+offset_top = -215.0
+offset_bottom = -16.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ja6d")
+
+[node name="DialogueBox" type="VBoxContainer" parent="Screen/DialoguePanel" unique_id=800067564]
+layout_mode = 2
+
+[node name="DialogueTitle" type="Label" parent="Screen/DialoguePanel/DialogueBox" unique_id=1252897814]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
+theme_override_font_sizes/font_size = 19
+text = "Разговор"
+
+[node name="DialogueText" type="Label" parent="Screen/DialoguePanel/DialogueBox" unique_id=1851693868]
+custom_minimum_size = Vector2(450, 68)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 3
+
+[node name="DialogueActions" type="HBoxContainer" parent="Screen/DialoguePanel/DialogueBox" unique_id=1635087238]
+layout_mode = 2
+
+[node name="BuyPotion" type="Button" parent="Screen/DialoguePanel/DialogueBox/DialogueActions" unique_id=2109078035]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "Зелье: 10 монет"
+
+[node name="SellWood" type="Button" parent="Screen/DialoguePanel/DialogueBox/DialogueActions" unique_id=1106942430]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "Продать древесину"
+
+[node name="RestButton" type="Button" parent="Screen/DialoguePanel/DialogueBox/DialogueActions" unique_id=420961528]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "Отдохнуть"
+
+[node name="CloseDialogue" type="Button" parent="Screen/DialoguePanel/DialogueBox" unique_id=1034110148]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "Закрыть диалог"
+
+[node name="ToastText" type="Label" parent="Screen" unique_id=1759457982]
+layout_mode = 0
+anchor_left = 0.25
+anchor_right = 0.75
+offset_top = 173.0
+offset_bottom = 173.0
+theme_override_colors/font_color = Color(0.95686275, 0.8980392, 0.7294118, 1)
+theme_override_font_sizes/font_size = 17
+horizontal_alignment = 1
+
+[node name="ToastTimer" type="Timer" parent="." unique_id=2011984664]
+wait_time = 2.6
+one_shot = true

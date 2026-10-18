@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cx3hojrr6i5rv"]
+
+[ext_resource type="Script" uid="uid://dqdotjgrci6fo" path="res://scripts/npc.gd" id="1_0h60j"]
+[ext_resource type="SpriteFrames" uid="uid://u40s1a3p2mr6" path="res://resources/animations/merchant.tres" id="2_0vq6u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_alb5r"]
+
+[node name="Merchant" type="Node2D" unique_id=732478755]
+script = ExtResource("1_0h60j")
+character_name = "Торговка Мира"
+role = "merchant"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=484749641]
+position = Vector2(0, -17)
+sprite_frames = ExtResource("2_0vq6u")
+animation = &"idle_down"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1728128026]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1860840028]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_alb5r")
+
+[node name="NameLabel" type="Label" parent="." unique_id=368214334]
+offset_left = -72.0
+offset_top = -64.0
+offset_right = 72.0
+offset_bottom = -41.0
+theme_override_colors/font_color = Color(0.9490196, 0.8784314, 0.6745098, 1)
+theme_override_font_sizes/font_size = 11
+text = "Торговка Мира"
+horizontal_alignment = 1

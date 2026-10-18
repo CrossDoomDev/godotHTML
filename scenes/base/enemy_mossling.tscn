@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dyf5w8fkv2gml"]
+
+[ext_resource type="Script" uid="uid://c1qepji2v2ptm" path="res://scripts/enemy.gd" id="1_rtm44"]
+[ext_resource type="SpriteFrames" uid="uid://1wqv0l2kevnw" path="res://resources/animations/mossling.tres" id="2_afvdx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iox65"]
+radius = 11.0
+
+[node name="Mossling" type="CharacterBody2D" unique_id=182918050]
+collision_layer = 2
+script = ExtResource("1_rtm44")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1552723059]
+position = Vector2(0, -24)
+sprite_frames = ExtResource("2_afvdx")
+animation = &"idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=872590331]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_iox65")
+
+[node name="RespawnTimer" type="Timer" parent="." unique_id=442504822]
+wait_time = 20.0
+one_shot = true
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1638063164]
+offset_left = -23.0
+offset_top = -52.0
+offset_right = 23.0
+offset_bottom = -46.0
+mouse_filter = 2
+value = 100.0
+show_percentage = false

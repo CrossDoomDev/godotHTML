@@ -1,0 +1,104 @@
+{
+  "tileSize": 32,
+  "characters": {
+    "cell": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      42
+    ],
+    "directions": [
+      "down",
+      "left",
+      "right",
+      "up"
+    ],
+    "animations": {
+      "idle": [
+        0,
+        1
+      ],
+      "walk": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "attack": [
+        6,
+        7,
+        8,
+        9
+      ]
+    }
+  },
+  "creatures": {
+    "mossling": {
+      "cell": [
+        48,
+        48
+      ],
+      "frames": 8,
+      "anchor": [
+        24,
+        42
+      ]
+    },
+    "guardian": {
+      "cell": [
+        64,
+        64
+      ],
+      "frames": 8,
+      "anchor": [
+        32,
+        56
+      ]
+    }
+  },
+  "icons": {
+    "cell": [
+      24,
+      24
+    ],
+    "frames": 8
+  },
+  "generatedHero": {
+    "cell": [
+      80,
+      80
+    ],
+    "anchor": [
+      40,
+      64
+    ],
+    "directions": [
+      "down",
+      "left",
+      "right",
+      "up"
+    ],
+    "animations": {
+      "idle": [
+        0,
+        1
+      ],
+      "walk": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "attack": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "bounds": "src/hero-frames.js",
+    "source": "assets/hero-source.png"
+  }
+}

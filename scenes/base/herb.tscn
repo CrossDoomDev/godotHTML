@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b4yv0ilkrg1tv"]
+
+[ext_resource type="Script" uid="uid://ctmjlr2jv2kvd" path="res://scripts/herb.gd" id="1_r5lxm"]
+[ext_resource type="Texture2D" uid="uid://dkcbpfp7mr78q" path="res://art/characters/icons.png" id="2_850bg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynlqf"]
+atlas = ExtResource("2_850bg")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jqy6c"]
+radius = 12.0
+
+[node name="Herb" type="Area2D" unique_id=649587711]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_r5lxm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=354979075]
+position = Vector2(0, -9)
+texture = SubResource("AtlasTexture_ynlqf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=732330795]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_jqy6c")

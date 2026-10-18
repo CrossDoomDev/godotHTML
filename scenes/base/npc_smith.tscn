@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cqu0b34fxn8hb"]
+
+[ext_resource type="Script" uid="uid://dqdotjgrci6fo" path="res://scripts/npc.gd" id="1_im602"]
+[ext_resource type="SpriteFrames" uid="uid://dw5xvvw7xsjsc" path="res://resources/animations/smith.tres" id="2_vj6x2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8bh7l"]
+
+[node name="Smith" type="Node2D" unique_id=1814685709]
+script = ExtResource("1_im602")
+character_name = "Кузнец Бран"
+role = "smith"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=859248609]
+position = Vector2(0, -17)
+sprite_frames = ExtResource("2_vj6x2")
+animation = &"idle_down"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=350628504]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=777244207]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_8bh7l")
+
+[node name="NameLabel" type="Label" parent="." unique_id=902972025]
+offset_left = -72.0
+offset_top = -64.0
+offset_right = 72.0
+offset_bottom = -41.0
+theme_override_colors/font_color = Color(0.9490196, 0.8784314, 0.6745098, 1)
+theme_override_font_sizes/font_size = 11
+text = "Кузнец Бран"
+horizontal_alignment = 1

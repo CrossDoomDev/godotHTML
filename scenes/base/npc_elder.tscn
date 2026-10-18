@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bbmn68woaa3hn"]
+
+[ext_resource type="Script" uid="uid://dqdotjgrci6fo" path="res://scripts/npc.gd" id="1_tq7tp"]
+[ext_resource type="SpriteFrames" uid="uid://g7behwhimlnb" path="res://resources/animations/elder.tres" id="2_vrt3q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7kcuq"]
+
+[node name="Elder" type="Node2D" unique_id=1175779824]
+script = ExtResource("1_tq7tp")
+character_name = "Староста Ольгерд"
+role = "elder"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=733619384]
+position = Vector2(0, -17)
+sprite_frames = ExtResource("2_vrt3q")
+animation = &"idle_down"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1323332813]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=577895714]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_7kcuq")
+
+[node name="NameLabel" type="Label" parent="." unique_id=314205293]
+offset_left = -72.0
+offset_top = -64.0
+offset_right = 74.0
+offset_bottom = -41.0
+theme_override_colors/font_color = Color(0.9490196, 0.8784314, 0.6745098, 1)
+theme_override_font_sizes/font_size = 11
+text = "Староста Ольгерд"
+horizontal_alignment = 1
