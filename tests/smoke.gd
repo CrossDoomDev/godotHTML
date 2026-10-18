@@ -46,8 +46,17 @@ func _run() -> void:
         check(frame_library.has_animation("walk_"+side), "authored SpriteFrames walk_"+side)
     check(main.get_node("HUD") is CanvasLayer, "editable native HUD")
     var char_art: AnimatedSprite2D = player.get_node("AnimatedSprite2D")
-    check(char_art.scale == Vector2.ONE, "hero displays only the original 2D sprite scale")
-    check(char_art.position == Vector2(0, -19), "2D sprite aligned correctly")
+    if ResourceLoader.exists("res://art/characters/forest_ranger.png"):
+        check(char_art.scale == Vector2(0.68, 0.68), "forest ranger 2D sprite scale")
+        check(char_art.position == Vector2(0, -32), "forest ranger feet stay anchored")
+        for direction in ["down", "up", "left", "right"]:
+            check(frame_library.get_frame_count("walk_" + direction) == 4,
+                "ranger walk frames for " + direction)
+            check(frame_library.get_frame_count("attack_" + direction) == 4,
+                "ranger attack frames for " + direction)
+    else:
+        check(char_art.scale == Vector2.ONE, "original hero 2D sprite scale")
+        check(char_art.position == Vector2(0, -19), "original sprite aligned correctly")
     check(char_art.sprite_frames.resource_path == "res://resources/animations/hero.tres",
         "character animation uses the 2D SpriteFrames resource")
     check(main.get_node("HUD").find_child("ModelButton", true, false) == null,
