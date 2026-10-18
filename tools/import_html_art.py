@@ -144,6 +144,22 @@ def main() -> None:
         with open(ROOT / "data/world_layout.json", "w", encoding="utf-8") as file:
             json.dump(data, file, ensure_ascii=False, separators=(",", ":"))
     terrain_sheet().save(ROOT / "art/terrain/tileset.png")
+    # Editor-visible native TextureRect minimap, derived from the original map.
+    preview = Image.new("RGBA", (40 * 4, 30 * 4), "#58793e")
+    painter = ImageDraw.Draw(preview)
+    hues = {"grass": "#58793e", "path": "#b38c5b",
+            "water": "#1c5e6f", "bridge": "#969582"}
+    for y, row in enumerate(data["terrain"]):
+        for x, cell in enumerate(row):
+            painter.rectangle((x*4,y*4,x*4+3,y*4+3),fill=hues[cell])
+    for item in data["objects"]:
+        if item.get("tree"):
+            x,y=int(item["x"]),int(item["y"])
+            painter.rectangle((x*4,y*4,x*4+3,y*4+3),fill="#2a5540")
+    for building in data["buildings"]:
+        x,y,w,h=(int(building[k]) for k in ("x","y","w","h"))
+        painter.rectangle((x*4,y*4,(x+w)*4-1,(y+h)*4-1),fill="#6c5540")
+    preview.save(ROOT / "art/terrain/minimap.png")
     print("Imported HTML git commit", data["source_git_sha"])
     print("Paintable world:", len(data["terrain"][0]), "x", len(data["terrain"]),
           "map cells;", len(data["objects"]), "prop instances;",
