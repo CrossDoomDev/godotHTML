@@ -10,7 +10,8 @@ collision_layer = 2
 script = ExtResource("1_hoir6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=153413650]
-position = Vector2(0, -31)
+position = Vector2(0, -32)
+scale = Vector2(1.5, 1.5)
 texture_filter = 1
 sprite_frames = ExtResource("2_erpn5")
 animation = &"idle_down"

@@ -48,10 +48,20 @@ func _run() -> void:
     var char_art: AnimatedSprite2D = player.get_node("AnimatedSprite2D")
     check(ResourceLoader.exists("res://art/characters/forest_ranger.png"),
         "new forest ranger atlas imported")
+    var ranger_image: Image = (load("res://art/characters/forest_ranger.png") as Texture2D).get_image()
+    check(ranger_image.get_size() == Vector2i(256, 384), "4x8 transparent ranger atlas dimensions")
+    for atlas_row in range(8):
+        for atlas_col in range(4):
+            var visible_pixels := 0
+            for yy in range(48):
+                for xx in range(64):
+                    if ranger_image.get_pixel(atlas_col * 64 + xx, atlas_row * 48 + yy).a > 0.5:
+                        visible_pixels += 1
+            check(visible_pixels > 90, "ranger atlas frame %d,%d is visible" % [atlas_row, atlas_col])
     check(not FileAccess.file_exists("res://art/characters/hero.png"),
         "obsolete HTML player sprite removed")
-    check(char_art.scale == Vector2.ONE, "new 64px ranger uses original-size 2D pixels")
-    check(char_art.position == Vector2(0, -31), "new ranger feet anchored on the ground")
+    check(char_art.scale == Vector2(1.5, 1.5), "hero uses 1.5x nearest-neighbor pixels")
+    check(char_art.position == Vector2(0, -32), "hero feet anchored on player origin")
     for direction in ["down", "up", "left", "right"]:
         check(frame_library.has_animation("idle_" + direction), "idle " + direction)
         check(frame_library.get_frame_count("idle_" + direction) == 4,
