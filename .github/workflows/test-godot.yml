@@ -12,6 +12,7 @@ on:
       - 'art/**'
       - 'project.godot'
       - 'tests/**'
+      - 'tools/import_html_art.py'
   workflow_dispatch:
 
 permissions:
@@ -28,6 +29,8 @@ jobs:
           curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.7.1-stable/Godot_v4.7.1-stable_linux.x86_64.zip
           unzip -q /tmp/godot.zip -d /tmp/godot4
           chmod +x /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64
+      - name: Ensure project contains only 2D character resources
+        run: python3 tests/assert_2d_only.py
       - name: Import and validate saved scenes
         run: |
           /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64 --headless --editor --path . --quit > /tmp/editor.log 2>&1 || (cat /tmp/editor.log && exit 1)
