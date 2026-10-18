@@ -39,13 +39,14 @@ jobs:
         run: |
           /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64 --headless --editor --path . --script res://tools/build_scenes.gd > /tmp/build.log 2>&1 || (cat /tmp/build.log && exit 1)
           cat /tmp/build.log
+          if grep -E 'SCRIPT ERROR|Parse Error|ERROR: Index|ERROR: Invalid|ERROR: Cannot' /tmp/build.log; then exit 1; fi
           test -s scenes/world/village.tscn
           test -s scenes/main.tscn
           test -s resources/tilesets/village.tres
       - name: Reimport scenes, verify no parse errors
         run: |
           /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64 --headless --editor --path . --quit > /tmp/import2.log 2>&1 || (cat /tmp/import2.log && exit 1)
-          cat /tmp/import2.log | grep -E 'SCRIPT ERROR|Parse Error|ERROR:' && exit 1 || true
+          if grep -E 'SCRIPT ERROR|Parse Error|ERROR:' /tmp/import2.log; then cat /tmp/import2.log; exit 1; fi
       - name: Native Godot smoke tests
         run: |
           /tmp/godot4/Godot_v4.7.1-stable_linux.x86_64 --headless --path . --script res://tests/smoke.gd > /tmp/test.log 2>&1 || (cat /tmp/test.log && exit 1)
