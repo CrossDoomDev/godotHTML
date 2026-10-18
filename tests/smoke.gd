@@ -46,11 +46,20 @@ func _run() -> void:
         check(frame_library.has_animation("walk_"+side), "authored SpriteFrames walk_"+side)
     check(main.get_node("HUD") is CanvasLayer, "editable native HUD")
     var char_art: AnimatedSprite2D = player.get_node("AnimatedSprite2D")
-    check(char_art.scale == Vector2(0.625,0.625), "original Blender hero source mode")
-    var old_hero: String = state.hero_model
-    player.toggle_hero_model()
-    check(state.hero_model != old_hero, "editable 2D / 3D character switch")
-    player.toggle_hero_model()
+    check(char_art.scale == Vector2.ONE, "hero displays only the original 2D sprite scale")
+    check(char_art.position == Vector2(0, -19), "2D sprite aligned correctly")
+    check(char_art.sprite_frames.resource_path == "res://resources/animations/hero.tres",
+        "character animation uses the 2D SpriteFrames resource")
+    check(main.get_node("HUD").find_child("ModelButton", true, false) == null,
+        "3D switch button is absent from the editor-authored HUD")
+    check(not player.has_method("toggle_hero_model"),
+        "no legacy 3D mode switching in player controller")
+    state.save_game()
+    var saved: Variant = JSON.parse_string(FileAccess.get_file_as_string(state.SAVE_PATH))
+    check(saved is Dictionary and not saved.has("hero_model"),
+        "old 3D mode setting is absent from new saves")
+    check(not ResourceLoader.exists("res://resources/animations/hero-3d-atlas.tres"),
+        "unused 3D animation atlas has been removed")
     var ambience: CanvasModulate = world.get_node("CanvasModulate")
     world.toggle_night()
     check(ambience.color != Color.WHITE, "native CanvasModulate night mode")
