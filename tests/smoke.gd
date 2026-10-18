@@ -29,6 +29,8 @@ func _run() -> void:
     var world: Node2D = main.get_node("Village")
     var tiles: TileMapLayer = world.get_node("Ground")
     check(tiles.get_used_cells().size() == 1200, "grass authored as 1,200 editor tile cells")
+    check(world.get_node("ForestFloor").get_used_cells().size() > 50,
+        "forest undergrowth is a paintable editor TileMapLayer")
     check(world.get_node("Roads").get_used_cells().size() > 60, "roads are editor TileMapLayer")
     check(world.get_node("Water").get_used_cells().size() > 0, "water editor TileMapLayer")
     check(world.get_node("Bridge").get_used_cells().size() > 0, "bridge editor TileMapLayer")
