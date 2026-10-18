@@ -61,13 +61,13 @@ def rect_draw(img: Image.Image, xy, color):
     ImageDraw.Draw(img).rectangle(xy, fill=color)
 
 def terrain_sheet() -> Image.Image:
-    atlas = Image.new("RGBA", (TILE * 16, TILE * 4), (0, 0, 0, 0))
+    atlas = Image.new("RGBA", (TILE * 16, TILE * 5), (0, 0, 0, 0))
     green = (88, 121, 62, 255)
     dirt = (179, 140, 91, 255)
     water = (28, 94, 111, 255)
-    for row in range(4):
+    for row in range(5):
         for variant in range(16):
-            im = Image.new("RGBA", (TILE, TILE), [green, dirt, water, (133, 134, 115, 255)][row])
+            im = Image.new("RGBA", (TILE, TILE), [green, dirt, water, (133, 134, 115, 255), (77, 109, 57, 255)][row])
             draw = ImageDraw.Draw(im)
             rng = random.Random((row + 1) * 13007 + variant * 79)
             if row == 0:
@@ -96,6 +96,14 @@ def terrain_sheet() -> Image.Image:
                 for i in range(5):
                     x, y = rng.randrange(3, 26), rng.randrange(3, 29)
                     draw.rectangle((x, y, x + (i % 2) + 3, y), fill=(45, 119, 130, 255))
+            elif row == 4:
+                # Forest undergrowth is a genuine native TileMap layer:
+                # grass, moss, scattered leaves and tiny plants.
+                for i in range(43):
+                    x, y = rng.randrange(1, 31), rng.randrange(1, 31)
+                    c = [(60,93,46,255), (101,132,64,255),
+                         (69,104,51,255), (124,145,68,255)][i % 4]
+                    draw.rectangle((x,y,x+(i % 7 == 0),y+(i % 5 == 0)),fill=c)
             else:
                 # Stone paving; grout forms a brick pattern, not a grass/path grid.
                 for y in range(0, 32, 12):
