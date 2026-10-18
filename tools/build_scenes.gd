@@ -17,7 +17,6 @@ func _run() -> void:
     var layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(MAP_PATH))
     _make_tileset()
     _make_spriteframes("hero", 48, 4)
-    _make_spriteframes("hero-3d-atlas", 128, 4)
     for name in ["elder", "smith", "merchant", "villager", "goblin"]:
         _make_spriteframes(name, 48, 4)
     _make_spriteframes("mossling", 48, 1)
@@ -139,8 +138,7 @@ func _create_player() -> void:
     player.collision_layer = 2
     player.collision_mask = 1
     player.set_script(load("res://scripts/player.gd"))
-    var player_art := _new_animated(player, player, "hero-3d-atlas", 128, -24)
-    player_art.scale = Vector2(0.625, 0.625)
+    _new_animated(player, player, "hero", 48, -19)
     _collider(player, player, 10.0, -8)
     var camera := Camera2D.new()
     camera.name = "Camera2D"
@@ -462,7 +460,6 @@ func _create_hud() -> void:
     _button(action_box,hud,"PotionButton","🧪 Зелье (2)")
     _button(action_box,hud,"AttackButton","⚔ Атака")
     _button(action_box,hud,"SaveButton","💾 Сохранить")
-    _button(action_box,hud,"ModelButton","👤 Спрайт 2D / 3D")
     _button(action_box,hud,"NightButton","🌙 День / ночь")
     var minimap := TextureRect.new()
     minimap.name = "Minimap"
