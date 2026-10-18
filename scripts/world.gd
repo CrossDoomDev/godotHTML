@@ -9,6 +9,7 @@ const MAP_HEIGHT := 30
 @onready var roads: TileMapLayer = $Roads
 @onready var water: TileMapLayer = $Water
 @onready var bridge: TileMapLayer = $Bridge
+@onready var ambient: CanvasModulate = $CanvasModulate
 @onready var player: CharacterBody2D = $Actors/Player
 @onready var actors: Node2D = $Actors
 var astar: AStarGrid2D = AStarGrid2D.new()
@@ -94,3 +95,7 @@ func _unhandled_input(event: InputEvent) -> void:
             player.set_world_destination(chosen.global_position + Vector2(0,30))
     else:
         player.set_world_destination(place)
+
+func toggle_night() -> void:
+    ambient.color = Color.WHITE if ambient.color != Color.WHITE else Color("#7583aa")
+    GameState.message.emit("Дневное освещение" if ambient.color == Color.WHITE else "Наступили сумерки")
