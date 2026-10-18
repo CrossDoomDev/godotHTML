@@ -43,6 +43,21 @@ func _run() -> void:
     for side in ["down","up","left","right"]:
         check(frame_library.has_animation("walk_"+side), "authored SpriteFrames walk_"+side)
     check(main.get_node("HUD") is CanvasLayer, "editable native HUD")
+    var char_art: AnimatedSprite2D = player.get_node("AnimatedSprite2D")
+    check(char_art.scale == Vector2(0.625,0.625), "original Blender hero source mode")
+    var old_hero: String = state.hero_model
+    player.toggle_hero_model()
+    check(state.hero_model != old_hero, "editable 2D / 3D character switch")
+    player.toggle_hero_model()
+    var ambience: CanvasModulate = world.get_node("CanvasModulate")
+    world.toggle_night()
+    check(ambience.color != Color.WHITE, "native CanvasModulate night mode")
+    world.toggle_night()
+    var foe: CharacterBody2D = world.get_node("Actors/Enemies").get_child(0)
+    foe.receive_hit(3)
+    check(foe.get_node("HealthBar").value == foe.max_health-3,
+        "enemy ProgressBar reflects health")
+
     check(world.find_walk_route(player.global_position, player.global_position+Vector2(32,0)).size() > 0,
         "pathfinding on editor-authored terrain")
     var old_xp: int = state.xp
