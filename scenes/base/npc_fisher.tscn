@@ -5,22 +5,22 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb3np"]
 
-[node name="Fisher" type="Node2D" unique_id=1684432078]
+[node name="Fisher" type="Node2D" unique_id=74467135]
 script = ExtResource("1_61nr4")
 character_name = "Рыбак Финн"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2080987298]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1212103790]
 position = Vector2(0, -17)
 sprite_frames = ExtResource("2_wyi4m")
 animation = &"idle_down"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1849444109]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=75801461]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=925600264]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1779066299]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_wb3np")
 
-[node name="NameLabel" type="Label" parent="." unique_id=735822608]
+[node name="NameLabel" type="Label" parent="." unique_id=1016559610]
 offset_left = -72.0
 offset_top = -64.0
 offset_right = 72.0
