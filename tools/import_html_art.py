@@ -127,7 +127,7 @@ def main() -> None:
         subprocess.run(["git", "clone", "--quiet", "--depth", "1", SOURCE_URL, str(src)], check=True)
         original = src / "assets"
         for asset in original.iterdir():
-            if asset.suffix.lower() in (".png", ".glb", ".json"):
+            if asset.suffix.lower() in (".png", ".glb", ".json") and "hero-3d" not in asset.stem.lower():
                 shutil.copy2(asset, ROOT / "assets/original" / asset.name)
         source = Image.open(original / "village-source.png").convert("RGBA")
         for name, (rect, size) in SPECS.items():
@@ -139,7 +139,7 @@ def main() -> None:
                 asset.paste((0, 0, 0, 0), (0, 0, count, size[1]))
             asset.save(ROOT / "art/environment" / f"{name}.png")
         for name in ("elder", "smith", "merchant", "villager", "goblin",
-                     "mossling", "guardian", "hero", "hero-3d-atlas", "icons"):
+                     "mossling", "guardian", "hero", "icons"):
             shutil.copy2(original / (name + ".png"), ROOT / "art/characters" / (name + ".png"))
         map_js = "import { createMap } from './src/map.js';process.stdout.write(JSON.stringify(createMap()));"
         proc = subprocess.run(["node", "--input-type=module", "-e", map_js],
