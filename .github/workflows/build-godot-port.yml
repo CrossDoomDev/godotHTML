@@ -11,6 +11,10 @@ on:
       - 'tests/**'
       - 'scenes/base/**'
       - 'project.godot'
+concurrency:
+  group: godothtml-editor-port-main
+  cancel-in-progress: true
+
 permissions:
   contents: write
 jobs:
