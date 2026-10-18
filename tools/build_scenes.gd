@@ -60,7 +60,7 @@ func _make_tileset() -> void:
     source.texture_region_size = Vector2i(T, T)
     # Source must be attached to TileSet BEFORE TileData physics is configured.
     tile_set.add_source(source, 0)
-    for row in range(4):
+    for row in range(5):
         for col in range(16):
             var tile := Vector2i(col, row)
             source.create_tile(tile)
@@ -264,7 +264,7 @@ func _create_world(layout: Dictionary) -> void:
     scene.set_script(load("res://scripts/world.gd"))
     var tileset: TileSet = load(TILESET_PATH)
     var layers: Dictionary = {}
-    for name in ["Ground","Roads","Water","Bridge"]:
+    for name in ["Ground","ForestFloor","Roads","Water","Bridge"]:
         var layer := TileMapLayer.new()
         layer.name = name
         layer.tile_set = tileset
@@ -281,6 +281,13 @@ func _create_world(layout: Dictionary) -> void:
             layers["Ground"].set_cell(cell,0,Vector2i((x * 7 + y * 11) % 16,0))
             var kind: String = row[x]
             if kind == "grass":
+                # Mossy woodland / forest undergrowth is a separate paintable
+                # layer, while tall trees stay individual y-sorted Sprite2D
+                # nodes with physical trunk collisions in the editor.
+                var woodland := (x < 7 or x > 29 or y < 9 or y > 24)
+                var cluster := ((x * 17 + y * 37 + x * y * 5) % 13) < 8
+                if woodland and cluster:
+                    layers["ForestFloor"].set_cell(cell,0,Vector2i((x*9+y*7)%16,4))
                 continue
             if kind == "path":
                 var mask := 0
