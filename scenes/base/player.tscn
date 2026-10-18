@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dcfygiq1x7vg7"]
 
 [ext_resource type="Script" uid="uid://d3p6tt7f256gc" path="res://scripts/player.gd" id="1_hoir6"]
-[ext_resource type="SpriteFrames" uid="uid://dq1o2av20yire" path="res://resources/animations/hero.tres" id="2_erpn5"]
+[ext_resource type="SpriteFrames" uid="uid://dq8dovmbafryd" path="res://resources/animations/hero.tres" id="2_erpn5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6bt6"]
 
@@ -10,7 +10,8 @@ collision_layer = 2
 script = ExtResource("1_hoir6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=153413650]
-position = Vector2(0, -19)
+position = Vector2(0, -31)
+texture_filter = 1
 sprite_frames = ExtResource("2_erpn5")
 animation = &"idle_down"
 

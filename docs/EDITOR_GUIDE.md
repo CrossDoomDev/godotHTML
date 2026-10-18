@@ -41,7 +41,7 @@
 - Откройте \`scenes/base/player.tscn\`.
 - Выберите \`AnimatedSprite2D\` и в Inspector откройте ресурс \`SpriteFrames\`.
 - Готовые анимации: \`idle_down\`, \`walk_down\`, \`attack_down\` и то же для направлений \`up\`, \`left\`, \`right\`.
-- Герой использует один 2D-ресурс \`resources/animations/hero.tres\`. Чтобы изменить его внешний вид, откройте ресурс в **Sprite Frames** через интерфейс Godot и замените необходимые кадры.
+- Герой-следопыт использует 2D-атлас \`art/characters/forest_ranger.png\` (64×64 на кадр) и редакторский ресурс \`resources/animations/hero.tres\`. Откройте его в **Sprite Frames** и меняйте кадры через Godot.
 - Переключение на 3D удалено. Старые сохранения остаются совместимыми, параметр \`hero_model\` из них игнорируется.
 
 ## Изменить поведение

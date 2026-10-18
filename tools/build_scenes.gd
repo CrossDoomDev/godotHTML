@@ -16,7 +16,8 @@ func _run() -> void:
     print("[BUILDER] Creating a native Godot editor project...")
     var layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(MAP_PATH))
     _make_tileset()
-    _make_spriteframes("hero", 48, 4)
+    # The player SpriteFrames in hero.tres are authored directly in Godot;
+    # never reconstruct them from the obsolete HTML hero atlas.
     for name in ["elder", "smith", "merchant", "villager", "goblin"]:
         _make_spriteframes(name, 48, 4)
     _make_spriteframes("mossling", 48, 1)
@@ -28,7 +29,7 @@ func _run() -> void:
     _create_world(layout)
     _create_hud()
     _create_main()
-    print("[BUILDER] OK: saved genuine TileMapLayers, 8 SpriteFrames atlases, props, NPCs, enemies, HUD and main scene.")
+    print("[BUILDER] OK: editor TileMapLayers and original ranger SpriteFrames preserved; NPCs and game scenes saved.")
     quit(0)
 
 func _attach(parent: Node, child: Node, root: Node) -> void:
@@ -138,7 +139,7 @@ func _create_player() -> void:
     player.collision_layer = 2
     player.collision_mask = 1
     player.set_script(load("res://scripts/player.gd"))
-    _new_animated(player, player, "hero", 48, -19)
+    _new_animated(player, player, "hero", 64, -31)
     _collider(player, player, 10.0, -8)
     var camera := Camera2D.new()
     camera.name = "Camera2D"

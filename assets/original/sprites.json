@@ -65,40 +65,27 @@
     ],
     "frames": 8
   },
-  "generatedHero": {
-    "cell": [
-      80,
-      80
-    ],
-    "anchor": [
-      40,
+  "godotPlayer": {
+    "source": "art/characters/forest_ranger.png",
+    "frameSize": [
+      64,
       64
+    ],
+    "layout": [
+      4,
+      12
     ],
     "directions": [
       "down",
+      "up",
       "left",
-      "right",
-      "up"
+      "right"
     ],
-    "animations": {
-      "idle": [
-        0,
-        1
-      ],
-      "walk": [
-        2,
-        3,
-        4,
-        5
-      ],
-      "attack": [
-        6,
-        7,
-        8,
-        9
-      ]
-    },
-    "bounds": "src/hero-frames.js",
-    "source": "assets/hero-source.png"
+    "animations": [
+      "idle",
+      "walk",
+      "attack"
+    ],
+    "engine": "Godot 4.7.1"
   }
 }
