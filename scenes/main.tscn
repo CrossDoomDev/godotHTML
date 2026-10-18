@@ -6,11 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cwstnq1j6spjo" path="res://scenes/base/hud.tscn" id="4_tipki"]
 [ext_resource type="Script" uid="uid://bxgkv3tpu5r3m" path="res://scripts/hud.gd" id="5_85g3d"]
 
-[node name="Main" type="Node2D" unique_id=1071276727]
+[node name="Main" type="Node2D" unique_id=1665287908]
 script = ExtResource("1_tbgi4")
 
-[node name="Village" type="Node2D" parent="." unique_id=1107043707 instance=ExtResource("2_tefeu")]
+[node name="Village" type="Node2D" parent="." unique_id=1458370020 instance=ExtResource("2_tefeu")]
 script = ExtResource("3_o6xl0")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1386721844 instance=ExtResource("4_tipki")]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1666845394 instance=ExtResource("4_tipki")]
 script = ExtResource("5_85g3d")

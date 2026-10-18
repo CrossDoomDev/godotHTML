@@ -6,24 +6,24 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_iox65"]
 radius = 11.0
 
-[node name="Mossling" type="CharacterBody2D" unique_id=34961075]
+[node name="Mossling" type="CharacterBody2D" unique_id=1765576534]
 collision_layer = 2
 script = ExtResource("1_rtm44")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=812897496]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1420990755]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_afvdx")
 animation = &"idle_down"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=511305039]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1243956405]
 position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_iox65")
 
-[node name="RespawnTimer" type="Timer" parent="." unique_id=230739840]
+[node name="RespawnTimer" type="Timer" parent="." unique_id=446265333]
 wait_time = 20.0
 one_shot = true
 
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=525795185]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=319263789]
 offset_left = -23.0
 offset_top = -52.0
 offset_right = 23.0
