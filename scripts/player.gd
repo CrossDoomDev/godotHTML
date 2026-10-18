@@ -6,7 +6,7 @@ signal struck(target: Node)
 
 @export var walk_speed: float = 105.0
 @export var attack_range: float = 54.0
-@export var attack_cooldown: float = 0.6
+@export var attack_cooldown: float = 0.9
 
 @onready var art: AnimatedSprite2D = $AnimatedSprite2D
 var direction: String = "down"
@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
     if velocity != Vector2.ZERO:
         face_vector(velocity)
     move_and_slide()
-    if attack_remaining <= 0.3:
+    if attack_remaining <= 0.0:
         update_animation(velocity.length() > 3.0)
     if Input.is_action_just_pressed("attack"):
         attack()
@@ -65,11 +65,7 @@ func update_animation(moving: bool) -> void:
 func attack() -> void:
     if attack_remaining > 0.0:
         return
-    attack_remaining = attack_cooldown
-    var anim := "attack_" + direction
-    if art.sprite_frames and art.sprite_frames.has_animation(anim):
-        art.play(anim)
-    var closest: Node = null
+    var closest: Node2D = null
     var shortest := attack_range
     for enemy in get_tree().get_nodes_in_group("enemy"):
         if not enemy.visible:
@@ -79,7 +75,13 @@ func attack() -> void:
             closest = enemy
             shortest = distance
     if closest:
+        # Face the target BEFORE choosing directional attack sprites.
         face_vector(closest.global_position - global_position)
+    attack_remaining = attack_cooldown
+    var anim := "attack_" + direction
+    if art.sprite_frames and art.sprite_frames.has_animation(anim):
+        art.play(anim)
+    if closest:
         closest.receive_hit(17 + GameState.level * 3)
         struck.emit(closest)
     else:
