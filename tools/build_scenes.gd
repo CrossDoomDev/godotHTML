@@ -139,7 +139,8 @@ func _create_player() -> void:
     player.collision_layer = 2
     player.collision_mask = 1
     player.set_script(load("res://scripts/player.gd"))
-    _new_animated(player, player, "hero", 48, -19)
+    var player_art := _new_animated(player, player, "hero-3d-atlas", 128, -24)
+    player_art.scale = Vector2(0.625, 0.625)
     _collider(player, player, 10.0, -8)
     var camera := Camera2D.new()
     camera.name = "Camera2D"
@@ -293,6 +294,10 @@ func _create_world(layout: Dictionary) -> void:
                 layers["Water"].set_cell(cell,0,Vector2i((x * 3 + y * 5)%16,2))
             elif kind == "bridge":
                 layers["Bridge"].set_cell(cell,0,Vector2i((x+y)%16,3))
+    var ambient := CanvasModulate.new()
+    ambient.name = "CanvasModulate"
+    ambient.color = Color.WHITE
+    _attach(scene,ambient,scene)
     var actors := Node2D.new()
     actors.name = "Actors"
     actors.y_sort_enabled = true
@@ -450,6 +455,8 @@ func _create_hud() -> void:
     _button(action_box,hud,"PotionButton","🧪 Зелье (2)")
     _button(action_box,hud,"AttackButton","⚔ Атака")
     _button(action_box,hud,"SaveButton","💾 Сохранить")
+    _button(action_box,hud,"ModelButton","👤 Спрайт 2D / 3D")
+    _button(action_box,hud,"NightButton","🌙 День / ночь")
     var minimap := TextureRect.new()
     minimap.name = "Minimap"
     minimap.texture = load("res://art/terrain/minimap.png")
