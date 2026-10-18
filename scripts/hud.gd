@@ -24,6 +24,8 @@ func _ready() -> void:
     find_child("PotionButton",true,false).pressed.connect(GameState.drink_potion)
     find_child("AttackButton",true,false).pressed.connect(_attack)
     find_child("SaveButton",true,false).pressed.connect(GameState.save_game)
+    find_child("ModelButton",true,false).pressed.connect(_toggle_model)
+    find_child("NightButton",true,false).pressed.connect(_toggle_night)
     find_child("CloseDialogue",true,false).pressed.connect(_close_dialogue)
     potion_purchase.pressed.connect(func(): GameState.buy("potion", 10); show_inventory_text())
     wood_sale.pressed.connect(func(): GameState.sell_wood(); show_inventory_text())
@@ -120,3 +122,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
             KEY_ESCAPE:
                 inventory_panel.hide()
                 dialogue_panel.hide()
+
+func _toggle_model() -> void:
+    get_tree().call_group("player", "toggle_hero_model")
+
+func _toggle_night() -> void:
+    get_tree().call_group("world", "toggle_night")
