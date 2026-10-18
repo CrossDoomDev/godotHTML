@@ -11,6 +11,7 @@ extends CharacterBody2D
 
 @onready var art: AnimatedSprite2D = $AnimatedSprite2D
 @onready var respawn_timer: Timer = $RespawnTimer
+@onready var health_bar: ProgressBar = $HealthBar
 var health: int
 var spawn_at: Vector2
 var attack_timer: float = 0.0
@@ -19,6 +20,8 @@ func _ready() -> void:
     add_to_group("enemy")
     spawn_at = global_position
     health = max_health
+    health_bar.max_value = max_health
+    health_bar.value = health
     respawn_timer.timeout.connect(_respawn)
     if is_boss and GameState.boss_defeated:
         visible = false
@@ -62,6 +65,7 @@ func receive_hit(amount: int) -> void:
     if not visible:
         return
     health -= maxi(0, amount)
+    health_bar.value = maxi(health, 0)
     if health <= 0:
         visible = false
         velocity = Vector2.ZERO
@@ -75,6 +79,7 @@ func receive_hit(amount: int) -> void:
 
 func _respawn() -> void:
     health = max_health
+    health_bar.value = health
     global_position = spawn_at
     visible = true
     set_physics_process(true)
